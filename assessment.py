@@ -27,7 +27,15 @@ go below this docstring.
 
 # TODO: this always returns True
 def is_hometown(town_name):
-    """Determines if town given is my hometown of smithtown"""
+    """Determines if town given is my hometown of smithtown
+
+    >>> is_hometown("smithtown")
+    True
+
+    >>> is_hometown("durian")
+    False
+
+    """
 
     if 'Smithtown' in town_name.title(): # compensate for input capatialization
         return True
@@ -36,7 +44,11 @@ def is_hometown(town_name):
 
 
 def name_smusher(first_name, last_name):
-    """Takes a first and last name and concatenatates them into one string"""
+    """Takes a first and last name and concatenatates them into one string
+
+    >>> name_smusher('Natasha', 'Mitchko')
+    'Natasha Mitchko'
+    """
     return first_name.title() + " " + last_name.title()
 
 
@@ -48,7 +60,7 @@ def greeting(first_name, last_name, town_name):
     else:
         print "Hello {}, I'd like to visit {}!".format(name, town_name.title())
 
-greeting('nat', 'mit', 'hi')
+
 ###############################################################################
 
 # PART TWO
@@ -200,6 +212,29 @@ def calculate_price(base_price, state, tax=(.05)):
 
 #        >>> outer("Balloonicorn")
 #        ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+#  .reduce()
+
+# def append_multiple_to_list(lst, nums):
+
+def multiply_string(string):
+    """Replicates input string three times
+
+    >>> multiply_string('Cat')
+    'CatCatCat'
+    """
+    return string * 3
+
+def sandwhich(string):
+    """Takes input and sandwhiches it between itself
+
+   >>> sandwhich("Balloonicorn")
+   ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+    """
+    output = (string, multiply_string(string))
+    return output
+
 
 
 ###############################################################################
