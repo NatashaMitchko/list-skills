@@ -25,6 +25,30 @@ go below this docstring.
 #        here', I'd like to visit 'town name here'!" depending on what the function
 #        from part (a) evaluates to.
 
+# TODO: this always returns True
+def is_hometown(town_name):
+    """Determines if town given is my hometown of smithtown"""
+
+    if 'Smithtown' in town_name.title(): # compensate for input capatialization
+        return True
+    else:
+        return False
+
+
+def name_smusher(first_name, last_name):
+    """Takes a first and last name and concatenatates them into one string"""
+    return first_name.title() + " " + last_name.title()
+
+
+def greeting(first_name, last_name, town_name):
+    """Prints a greeting containing information about the users name and hometown"""
+    name = name_smusher(first_name, last_name)
+    if is_hometown:
+        print "Hello {}, we're from the same place!".format(name)
+    else:
+        print "Hello {}, I'd like to visit {}!".format(name, town_name.title())
+
+greeting('nat', 'mit', 'hi')
 ###############################################################################
 
 # PART TWO
@@ -70,7 +94,10 @@ def is_berry(fruit):
 
     """
 
-    pass
+    if 'berry' in fruit:
+        return True
+    else:
+        return False
 
 
 def shipping_cost(fruit):
@@ -83,10 +110,16 @@ def shipping_cost(fruit):
     5
 
     """
+    berry_truthiness = is_berry(fruit)
+    if berry_truthiness == True:
+        return 0
+    else:
+        return 5
 
-    pass
-
-
+# The problem with this is that it also changes the original list
+# Except maybe it doesn't? Perhaps once the list is passed to the function a new
+# instance of it is created for use only in the function's scope?
+# Get help on this one
 def append_to_list(lst, num):
     """Returns a new list consisting of the old list with the given number
        added to the end.
@@ -96,10 +129,12 @@ def append_to_list(lst, num):
 
     """
 
-    pass
+    lst.append(num)
+    new_list = lst
+    return new_list
 
 
-def calculate_price(FILL_ME_IN):
+def calculate_price(base_price, state, tax=(.05)):
     """Calculate total price of an item, figuring in state taxes and fees.
 
     >>> calculate_price(40, "CA")
@@ -121,8 +156,25 @@ def calculate_price(FILL_ME_IN):
     135.3
 
     """
+    # Calculate tax
+    # 1 plus tax so the total will be the price plus the tax at the given rate
+    price_after_tax = base_price * (1 + tax)
 
-    pass
+    # Add fees based on state
+    if state == 'CA':
+        price_after_fees = price_after_tax * 1.03
+    elif state == 'PA':
+        price_after_fees = price_after_tax + 2
+    elif state == 'MA' and base_price < 100:
+        price_after_fees = price_after_tax + 1
+    elif state == 'MA' and base_price > 100:
+        price_after_fees = price_after_tax + 3
+    else:
+        price_after_fees = price_after_tax # i.e. no fees
+    return price_after_fees
+
+
+    
 
 
 ###############################################################################
