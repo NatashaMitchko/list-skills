@@ -215,7 +215,15 @@ def calculate_price(base_price, state, tax=(.05)):
 
 #  .reduce()
 
-# def append_multiple_to_list(lst, nums):
+def append_multiple_to_list(lst, *items):
+    """Takes list and n number of items to append to list
+
+    >>> append_multiple_to_list([1,2,3], 4, 5, 6, 7, 8,)
+    [1, 2, 3, 4, 5, 6, 7, 8]
+
+    """
+    lst.extend(items)
+    return lst
 
 def multiply_string(string):
     """Replicates input string three times
