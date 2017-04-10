@@ -48,6 +48,7 @@ def name_smusher(first_name, last_name):
 
     >>> name_smusher('Natasha', 'Mitchko')
     'Natasha Mitchko'
+
     """
     return first_name.title() + " " + last_name.title()
 
@@ -183,6 +184,8 @@ def calculate_price(base_price, state, tax=(.05)):
         price_after_fees = price_after_tax + 3
     else:
         price_after_fees = price_after_tax # i.e. no fees
+
+    # return value that includes tax and fees
     return price_after_fees
 
 
@@ -215,6 +218,10 @@ def calculate_price(base_price, state, tax=(.05)):
 
 #  .reduce()
 
+# From the internet it looks like passing a function *args stores them as a tuple
+# I think that because the .extend() method iterates over the argument passed to it
+# it doesn't matter that we don't pass it a list as long as we pass it something iterable
+# Check if this is right ^^^^
 def append_multiple_to_list(lst, *items):
     """Takes list and n number of items to append to list
 
